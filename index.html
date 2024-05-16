@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechGuyGeek</title>
+<style>
+    /* Basic reset */
+    body, h1, p, ul {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+    /* Basic styling */
+    body {
+        font-family: Arial, sans-serif;
+        background: black; /* Added to match the third website's background */
+        color: white; /* Changed to white for better readability */
+    }
+    header, section {
+        padding: 20px;
+        text-align: center;
+    }
+    /* Navigation bar styling */
+    nav {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000; /* Ensure the nav bar is on top of other content */
+    }
+    nav a {
+        color: white;
+        text-decoration: none;
+        margin: 0 15px;
+        font-size: 18px;
+    }
+    /* Section styling */
+    section {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
+        padding: 20px;
+        text-align: center;
+    }
+    /* Additional styles from the second website */
+    .line {
+        width: 100%;
+        height: 0;
+        transition: height 0.8s linear;
+    }
+    #contentBox {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 75%;
+        height: 75%;
+        background: black;
+        border: 2px solid white;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 24px;
+        text-align: center;
+        padding: 20px;
+        box-sizing: border-box;
+        flex-direction: column;
+        z-index: 1; /* Move behind #home */
+    }
+    #animatedText {
+        color: white;
+        font-size: 2em;
+        margin-bottom: 20px;
+        border-right: 2px solid white;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 0;
+        animation: typing 2s steps(12, end) 1s 1 normal both, blink-caret .75s step-end infinite;
+    }
+    #services {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure it takes full height */
+}
+    .background-collage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: space-around;
+}
+    .background-collage img {
+        width: 20%;
+        height: auto;
+        position: absolute;
+        opacity: 0.5;
+    }
+    .services-content {
+    position: relative;
+    z-index: 2;
+    background-color: rgba(64, 64, 64, 0.7); /* Darker semi-transparent grey box */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 80%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20vh; /* Added to push content down */
+}
+    button {
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    #buttonsContainer {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+    }
+    a {
+        color: white; /* Set hyperlink text color to white */
+        text-decoration: none; /* Remove underline */
+    }
+    @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+    }
+    @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: white }
+    }
+    .screen-wall {
+        width: 90vw;
+        height: 90vh;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: 10px;
+        position: relative;
+    }
+    .screen {
+        position: relative;
+        padding-top: 10.25%;
+    }
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+    .tv-frame {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('TV6.png') center center no-repeat;
+        background-size: cover;
+        z-index: 2;
+    }
+</style>
+</head>
+<body>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#Price">Pricing</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    
+    <!-- Website Three: 4x5 Video Grid with TV Frames -->
+    <section id="home">
+        <div class="screen-wall">
+            <script>
+                const container = document.querySelector('.screen-wall');
+                const videoIDs = ['fT_XSVrbfqM','ubFq-wV3Eic','s5_6MV1dUro','ubFq-wV3Eic','KFRXPI2FXfk',
+                                'ubFq-wV3Eic','qpPI3fwEIm8','ubFq-wV3Eic','wxNYCZeW7YI','ubFq-wV3Eic',
+                                'tu0yn_RzWsk','ubFq-wV3Eic','WfSCfBntqPU','ubFq-wV3Eic','HoJrCGlCYds&list=PLm6Z4vpjAA6GteDJoDtRS_-tuj7512sm5',
+                                'ubFq-wV3Eic','r4LkGET5BWg','ubFq-wV3Eic','Fcgh4hWrniM','ubFq-wV3Eic'];
+                for (let i = 0; i < 20; i++) {
+                    const screen = document.createElement('div');
+                    screen.className = 'screen';
+                    const iframe = document.createElement('iframe');
+                    iframe.src = `https://www.youtube.com/embed/${videoIDs[i]}?autoplay=1&mute=1&loop=1&playlist=${videoIDs[i]}&controls=0&modestbranding=1&vq=small`;
+                    iframe.frameBorder = "0";
+                    iframe.allow = "autoplay; encrypted-media; fullscreen";
+                    iframe.allowFullscreen = true;
+                    const frameOverlay = document.createElement('div');
+                    frameOverlay.className = 'tv-frame';
+                    screen.appendChild(iframe);
+                    screen.appendChild(frameOverlay);
+                    container.appendChild(screen);
+                }
+            </script>
+        </div>
+    </section>
+
+    <!-- Website Two: Spectrum Inspired Animation -->
+    <section id="Price">
+<p>Home Users</p>
+<br>
+<p>We can remotely assist you or come to your home for £50 per hour.</p>
+<p>I'm happy to reduce this to £15 per hour if you are near SW3 and over the age of 65.</p>
+<br>
+<p>Company</p>
+<br>
+<p>We can remotely assist you or come to your office for £75 per hour.</p>
+<p>I'm happy to offer a discount if you would like a rolling contract of £100 per week.</p>
+<br>
+<p>All prices are negotiable, so please email to discuss.</p>
+
+
+    </section>
+
+    <!-- Website One: TechGuyGeek.com -->
+    <section id="services">
+        <div class="background-collage">
+            <!-- Images are dynamically added here by JavaScript -->
+            <div class="services-content">
+                <h1>Services</h1>
+                <br>
+                <p>Here's what we can do for you.</p>
+                <br>
+                <p>TechGuyGeek staff have been providing on-site or remote Tech support for companies and the public since 1997. 
+                <br>We are dedicated to assisting you with any tech-related issues you may encounter. Our support extends to various platforms, 
+                <br>including Windows, Apple, and Linux computers, as well as Android and Apple mobile phones.</p>
+                <br>
+                <p>Whether you need assistance setting up a single device or managing hundreds, we are here to help. 
+                <br>We offer personalized support, tailored to suit the needs of your company or home life. 
+                <br>Our expertise includes hands-on assistance or utilizing a Mobile Device Management system, 
+                <br>providing you with the level of control that best fits your requirements.</p>
+                <br>
+                <p>If you want to create your own company or you want us to manage your current systems, 
+                <br>then send us an email so we can discuss domain, email exchange, cloud management systems, 
+                <br>build a website, or website hosting and setup or manage, to get you up and running.</p>
+                <br>
+                <p>In addition to device support, TechGuyGeek can manage and maintain your network to ensure it runs smoothly.
+                <br> If you encounter any issues, please feel free to email us, and we will work with you to resolve them promptly.</p>
+                <br>     
+                <p>We are committed to offering comprehensive explanations to ensure you and your staff can effectively utilize your devices. 
+                <br>
+                <br>TechGuyGeek staff can repair any damage to any device or at least offer some helpful advice on what to do next.</p>
+                <p>Whatever your digital needs may be, don't hesitate to reach out and ask. We're here to help! 😊</p>
+            </div>        
+        </div>
+    </section>
+    
+    <!-- Website Three: Contact Us -->
+    <section id="contact">
+        <h1>Contact Us</h1>
+        <br>
+        <p>Get in touch for more details.</p>
+        <br>
+        <p>Call us: <a href="tel:+447525830620">07525830620</a></p>
+        <br>
+        <p>Email: <a href="mailto:support@techguygeek.com">support@techguygeek.com</a></p>
+        <br>
+        <p>WhatsApp: <a href="https://wa.me/447525830620" target="_blank">Message us on WhatsApp</a></p>
+        <br>
+        <p>Find me: 21b Elbourn house Cale street Chelsea SW33SD</p>
+        <br>
+    </section>
+
+    <script>
+        // JavaScript for dynamic image loading in the collage
+        const collage = document.querySelector('.background-collage');
+        const imagePath = 'images/';
+        for (let i = 0; i < 100; i++) {
+            const img = document.createElement('img');
+            img.src = `${imagePath}image${i}.jpg`;
+            img.style.top = `${Math.random() * 100}%`;
+            img.style.left = `${Math.random() * 100}%`;
+            img.onload = () => collage.appendChild(img);
+            img.onerror = () => console.log('Image load failed: ' + img.src);
+        }
+
+        // Smooth scrolling with fixed header
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                window.scrollTo({
+                    top: target.offsetTop - document.querySelector('nav').offsetHeight,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
