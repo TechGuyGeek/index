@@ -56,6 +56,11 @@
         height: 100vh;
         border: none;
     }
+    .map-container {
+        width: 100%;
+        height: 400px;
+        margin: 20px 0;
+    }
 </style>
 </head>
 <body>
@@ -68,8 +73,7 @@
     
     <section id="home">
         <div class="screen-wall">
-             <iframe src="https://www.youtube.com/embed/Lc4tcBad2VA?autoplay=1&controls=0&modestbranding=1&rel=0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
-
+            <iframe src="https://www.youtube.com/embed/Lc4tcBad2VA?autoplay=1&controls=0&modestbranding=1&rel=0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
         </div>
     </section>
 
@@ -117,7 +121,7 @@
             </div>        
         </div>
     </section>
-    
+
     <section id="contact">
         <h1>Contact Us</h1>
         <br>
@@ -131,19 +135,37 @@
         <br>
         <p>Find me: 21b Elbourn house Cale street Chelsea SW33SD</p>
         <br>
+        <div id="map" class="map-container"></div>
+        <p>Enter your postcode for directions:</p>
+        <form id="directionsForm">
+            <input type="text" id="postcode" name="postcode" placeholder="Enter your postcode">
+            <button type="button" onclick="getDirections()">Get Directions</button>
+        </form>
     </section>
 
     <script>
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                window.scrollTo({
-                    top: target.offsetTop - document.querySelector('nav').offsetHeight,
-                    behavior: 'smooth'
-                });
+        function initMap() {
+            const location = { lat: 51.490763, lng: -0.168110 };
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 15,
+                center: location,
             });
-        });
+            const marker = new google.maps.Marker({
+                position: location,
+                map: map,
+            });
+        }
+
+        function getDirections() {
+            const postcode = document.getElementById('postcode').value;
+            if (postcode) {
+                const destination = "21b Elbourn House, Cale Street, Chelsea, SW3 3SD, UK";
+                window.open(`https://www.google.com/maps/dir/?api=1&origin=${postcode}&destination=${encodeURIComponent(destination)}`, '_blank');
+            } else {
+                alert("Please enter your postcode.");
+            }
+        }
     </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANMv8rs1hkhoUeibf9Zis-AmZMsLxU6yc&callback=initMap"></script>
 </body>
 </html>
