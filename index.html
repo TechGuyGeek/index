@@ -5,216 +5,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TechGuyGeek</title>
 <style>
-/* Basic reset */
-body, h1, p, ul {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
-
-/* Basic styling */
-body {
-    font-family: Arial, sans-serif;
-    background: black;
-    color: white;
-}
-
-header, section {
-    padding: 20px;
-    text-align: center;
-}
-
-/* Navigation bar styling */
-nav {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 18px;
-}
-
-/* Section styling */
-section {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
-    padding: 20px;
-    text-align: center;
-}
-
-.line {
-    width: 100%;
-    height: 0;
-    transition: height 0.8s linear;
-}
-
-#contentBox {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 75%;
-    height: 75%;
-    background: black;
-    border: 2px solid white;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 24px;
-    text-align: center;
-    padding: 20px;
-    box-sizing: border-box;
-    flex-direction: column;
-    z-index: 1;
-}
-
-#animatedText {
-    color: white;
-    font-size: 2em;
-    margin-bottom: 20px;
-    border-right: 2px solid white;
-    white-space: nowrap;
-    overflow: hidden;
-    width: 0;
-    animation: typing 2s steps(12, end) 1s 1 normal both, blink-caret .75s step-end infinite;
-}
-
-#services {
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.background-collage {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    justify-content: space-around;
-}
-
-.background-collage img {
-    width: 20%;
-    height: auto;
-    position: absolute;
-    opacity: 0.5;
-}
-
-.services-content {
-    position: relative;
-    z-index: 2;
-    background-color: rgba(128, 128, 128, 0.7);
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 80%;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 20vh;
-}
-
-button {
-    padding: 10px 20px;
-    margin: 10px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-#buttonsContainer {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-}
-
-a {
-    color: white;
-    text-decoration: none;
-}
-
-/* Typing and caret animations */
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-}
-
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: white }
-}
-
-.screen-wall {
-    width: 90vw;
-    height: 90vh;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    gap: 10px;
-    position: relative;
-}
-
-.screen {
-    position: relative;
-    padding-top: 10.25%;
-}
-
-iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
-
-.tv-frame {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('TV6.png') center center no-repeat;
-    background-size: cover;
-    z-index: 2;
-}
-
-/* Media Queries for Responsive Design */
-@media (max-width: 768px) {
+    body, h1, p, ul {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        background: black;
+        color: white;
+    }
+    header, section {
+        padding: 20px;
+        text-align: center;
+    }
+    nav {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    nav a {
+        color: white;
+        text-decoration: none;
+        margin: 0 15px;
+        font-size: 18px;
+    }
+    section {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
+        padding: 20px;
+        text-align: center;
+    }
     .screen-wall {
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(3, 1fr);
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-
-    .tv-frame {
-        background: url('TV7.png') center center no-repeat;
-        background-size: cover;
+    iframe {
+        width: 100%;
+        height: 100vh;
+        border: none;
     }
-
-    .services-content {
-        margin-top: 10vh;
-    }
-}
-
 </style>
 </head>
 <body>
@@ -225,54 +66,28 @@ iframe {
         <a href="#contact">Contact</a>
     </nav>
     
-    <!-- Website Three: 4x5 Video Grid with TV Frames -->
     <section id="home">
         <div class="screen-wall">
-            <script>
-                const container = document.querySelector('.screen-wall');
-                const videoIDs = ['fT_XSVrbfqM','ubFq-wV3Eic','s5_6MV1dUro','ubFq-wV3Eic','KFRXPI2FXfk',
-                                'ubFq-wV3Eic','qpPI3fwEIm8','ubFq-wV3Eic','wxNYCZeW7YI','ubFq-wV3Eic',
-                                'tu0yn_RzWsk','ubFq-wV3Eic','WfSCfBntqPU','ubFq-wV3Eic','HoJrCGlCYds&list=PLm6Z4vpjAA6GteDJoDtRS_-tuj7512sm5',
-                                'ubFq-wV3Eic','r4LkGET5BWg','ubFq-wV3Eic','Fcgh4hWrniM','ubFq-wV3Eic'];
-                for (let i = 0; i < 20; i++) {
-                    const screen = document.createElement('div');
-                    screen.className = 'screen';
-                    const iframe = document.createElement('iframe');
-                    iframe.src = `https://www.youtube.com/embed/${videoIDs[i]}?autoplay=1&mute=1&loop=1&playlist=${videoIDs[i]}&controls=0&modestbranding=1&vq=small`;
-                    iframe.frameBorder = "0";
-                    iframe.allow = "autoplay; encrypted-media; fullscreen";
-                    iframe.allowFullscreen = true;
-                    const frameOverlay = document.createElement('div');
-                    frameOverlay.className = 'tv-frame';
-                    screen.appendChild(iframe);
-                    screen.appendChild(frameOverlay);
-                    container.appendChild(screen);
-                }
-            </script>
+            <iframe src="https://www.youtube.com/embed/FLsQiJWHGqg?autoplay=1&mute=1&loop=1&playlist=FLsQiJWHGqg&controls=0&modestbranding=1" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
         </div>
     </section>
 
-    <!-- Website Two: Spectrum Inspired Animation -->
     <section id="Price">
-<p>Home Users</p>
-<br>
-<p>We can remotely assist you or come to your home for £50 per hour.</p>
-<p>I'm happy to reduce this to £15 per hour if you are near SW3 and over the age of 65.</p>
-<br>
-<p>Company</p>
-<br>
-<p>We can remotely assist you or come to your office for £75 per hour.</p>
-<p>I'm happy to offer a discount if you would like a rolling contract of £100 per week.</p>
-<br>
-<p>All prices are negotiable, so please email to discuss.</p>
-
-
+        <p>Home Users</p>
+        <br>
+        <p>We can remotely assist you or come to your home for £50 per hour.</p>
+        <p>I'm happy to reduce this to £15 per hour if you are near SW3 and over the age of 65.</p>
+        <br>
+        <p>Company</p>
+        <br>
+        <p>We can remotely assist you or come to your office for £75 per hour.</p>
+        <p>I'm happy to offer a discount if you would like a rolling contract of £100 per week.</p>
+        <br>
+        <p>All prices are negotiable, so please email to discuss.</p>
     </section>
 
-    <!-- Website One: TechGuyGeek.com -->
     <section id="services">
         <div class="background-collage">
-            <!-- Images are dynamically added here by JavaScript -->
             <div class="services-content">
                 <h1>Services</h1>
                 <br>
@@ -302,7 +117,6 @@ iframe {
         </div>
     </section>
     
-    <!-- Website Three: Contact Us -->
     <section id="contact">
         <h1>Contact Us</h1>
         <br>
@@ -319,19 +133,6 @@ iframe {
     </section>
 
     <script>
-        // JavaScript for dynamic image loading in the collage
-        const collage = document.querySelector('.background-collage');
-        const imagePath = 'images/';
-        for (let i = 0; i < 300; i++) {
-            const img = document.createElement('img');
-            img.src = `${imagePath}image${i}.jpg`;
-            img.style.top = `${Math.random() * 100}%`;
-            img.style.left = `${Math.random() * 100}%`;
-            img.onload = () => collage.appendChild(img);
-            img.onerror = () => console.log('Image load failed: ' + img.src);
-        }
-
-        // Smooth scrolling with fixed header
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
