@@ -133,7 +133,7 @@
         <br>
         <p>WhatsApp: <a href="https://wa.me/447525830620" target="_blank">Message us on WhatsApp</a></p>
         <br>
-        <p>Find me: 21B Elbourn house Cale street Chelsea SW33SD</p>
+        <p>Find me: Elbourn house Cale street Chelsea SW33SD</p>
         <br>
         <div id="map" class="map-container"></div>
         <p>Enter your postcode for directions:</p>
@@ -159,7 +159,7 @@
         function getDirections() {
             const postcode = document.getElementById('postcode').value;
             if (postcode) {
-                const destination = "21B Elbourn House, Cale Street, Chelsea, SW33SD, UK";
+                const destination = "Elbourn House, Cale Street, Chelsea, SW33SD, UK";
                 window.open(`https://www.google.com/maps/dir/?api=1&origin=${postcode}&destination=${encodeURIComponent(destination)}`, '_blank');
             } else {
                 alert("Please enter your postcode.");
