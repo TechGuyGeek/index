@@ -138,7 +138,7 @@
             }
         }
 
-        async function generatePasswords() {
+         async function generatePasswords() {
             const word1 = await fetchRandomWord();
             const word2 = await fetchRandomWord();
             const word3 = await fetchRandomWord();
@@ -153,8 +153,8 @@
             const username = document.getElementById("username").value;
             const email = document.getElementById("email").value;
             
-            const outputText = `Username: ${username}<br>Email: ${email}<br>Website: https://www.microsoft365.com/<br>Email Password: <b>${email}</b> - <b>${emailPassword}</b><br>PC Password: <b>${pcPassword}</b>`;
-            document.getElementById("output").innerText = outputText;
+            const outputText = `Username: ${username}<br>Email: ${email}<br>Website: https://www.microsoft365.com/<br><b>Email Password:</b> ${emailPassword}<br><b>PC Password:</b> ${pcPassword}`;
+            document.getElementById("output").innerHTML = outputText;
         }
     </script>
 
