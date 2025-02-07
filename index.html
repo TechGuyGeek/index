@@ -201,31 +201,30 @@
         }
     }
 
-    async function generatePasswords() {
-        const word1 = await fetchRandomWord();
-        const word2 = await fetchRandomWord();
-        const word3 = await fetchRandomWord();
-        const number = Math.floor(Math.random() * 100);
-        const symbols = "!@#$%^&*";
-        const symbol1 = symbols[Math.floor(Math.random() * symbols.length)];
-        const symbol2 = symbols[Math.floor(Math.random() * symbols.length)];
+   async function generatePasswords() {
+    const word1 = await fetchRandomWord();
+    const word2 = await fetchRandomWord();
+    const word3 = await fetchRandomWord();
+    const number = Math.floor(Math.random() * 100);
+    const symbols = "!@#$%^&*";
+    const symbol1 = symbols[Math.floor(Math.random() * symbols.length)];
+    const symbol2 = symbols[Math.floor(Math.random() * symbols.length)];
+    
+    // Construct the original password
+    let emailPassword = `${word1}${symbol1}${word2}${symbol2}${word3}${number}`;
+    
+    // Replace 'a' and 'o' with '@' in the email password
+    emailPassword = emailPassword.replace(/a/g, '@').replace(/o/g, '@');
 
-        const emailPassword = `${word1}${symbol1}${word2}${symbol2}${word3}${number}`;
-        const pcPassword = `${word1}${symbol1}${word2}${number}`;
-
-        const username = document.getElementById("username").value;
-        const email = document.getElementById("email").value;
-
-        const outputText = `
-            <b>Username:</b> ${username}<br>
-            <b>Email:</b> ${email}<br>
-            <b>Website:</b> https://www.microsoft365.com/<br>
-            <b>Email Password:</b> <span style='white-space: nowrap;'>${emailPassword}</span><br>
-            <b>PC Password:</b> <span style='white-space: nowrap;'>${pcPassword}</span>
-        `;
-
-        document.getElementById("output").innerHTML = outputText;
-    }
+    // PC password remains unchanged
+    const pcPassword = `${word1}${symbol1}${word2}${number}`;
+    
+    const username = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
+    
+    const outputText = `<b>Username:</b> ${username}<br><b>Email:</b> ${email}<br><b>Website:</b> https://www.microsoft365.com/<br><b>Email Password:</b> <span style='white-space: nowrap;'>${emailPassword}</span><br><b>PC Password:</b> ${pcPassword}`;
+    document.getElementById("output").innerHTML = outputText;
+}
 </script>
 
     <section id="price">
