@@ -45,33 +45,18 @@
         text-align: center;
     }
     .container {
-    max-width: 600px;
-    width: 100%; /* Ensure it expands fully */
-    margin: auto;
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    text-align: left;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch; /* Ensure elements inside expand to match width */
-}
-
-.output-container {
-    background: #82e0aa;
-    padding: 15px;
-    border-radius: 10px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    margin-top: 10px;
-    width: 100%;
-    text-align: left;
-    overflow: hidden;
-    box-sizing: border-box; /* Ensure padding doesn't overflow */
-}
+        max-width: 600px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        text-align: left;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     .speech-bubble {
         position: relative;
         background: #82e0aa;
@@ -107,8 +92,7 @@
         border-radius: 5px;
         border: 1px solid #ccc;
     }
-
-      .output-wrapper {
+    .output-wrapper {
         width: 100%;
         background: white;
         padding: 10px;
@@ -116,7 +100,16 @@
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
         margin-top: 10px;
     }
-  
+    .output-container {
+        background: #82e0aa;
+        padding: 15px;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+        text-align: left;
+        overflow: hidden;
+    }
 </style>
     
 </head>
