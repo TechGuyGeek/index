@@ -151,7 +151,6 @@
         </div>
     </section>
 
-
     <script>
         async function fetchRandomWord() {
             try {
@@ -164,7 +163,7 @@
             }
         }
 
-         async function generatePasswords() {
+        async function generatePasswords() {
             const word1 = await fetchRandomWord();
             const word2 = await fetchRandomWord();
             const word3 = await fetchRandomWord();
@@ -179,7 +178,7 @@
             const username = document.getElementById("username").value;
             const email = document.getElementById("email").value;
             
-            const outputText = `Username: ${username}<br>Email: ${email}<br>Website: https://www.microsoft365.com/<br><b>Email Password:</b> ${emailPassword}<br><b>PC Password:</b> ${pcPassword}`;
+            const outputText = `<b>Username:</b> ${username}<br><b>Email:</b> ${email}<br><b>Website:</b> https://www.microsoft365.com/<br><b>Email Password:</b> <span style='white-space: nowrap;'>${emailPassword}</span><br><b>PC Password:</b> ${pcPassword}`;
             document.getElementById("output").innerHTML = outputText;
         }
     </script>
