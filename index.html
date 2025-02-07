@@ -44,18 +44,6 @@
         padding: 20px;
         text-align: center;
     }
-    .screen-wall {
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    iframe {
-        width: 100%;
-        height: 100vh;
-        border: none;
-    }
     .container {
         max-width: 500px;
         margin: auto;
@@ -112,12 +100,6 @@
         <a href="#contact">Contact</a>
     </nav>
     
-    <section id="home">
-        <div class="screen-wall">
-            <iframe src="https://www.youtube.com/embed/Lc4tcBad2VA?autoplay=1&controls=0&modestbranding=1&rel=0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
-        </div>
-    </section>
-
     <section id="password-generator">
         <div class="container">
             <img src="mascot.png" alt="Mascot" class="mascot">
@@ -129,35 +111,35 @@
     </section>
 
     <script>
-       let words = [];
+        let words = [];
         let symbols = "";
 
         async function loadWordsAndSymbols() {
-            const response = await fetch('words_symbols.json');
-            const data = await response.json();
-            words = data.words;
-            symbols = data.symbols;
+            try {
+                const response = await fetch('words_symbols.json');
+                const data = await response.json();
+                words = data.words;
+                symbols = data.symbols;
+            } catch (error) {
+                console.error("Error loading words and symbols:", error);
+            }
         }
 
         function getRandomSymbol() {
-            return symbols[Math.floor(Math.random() * symbols.length)];
+            return symbols.length > 0 ? symbols[Math.floor(Math.random() * symbols.length)] : '!';
         }
         
-        function generateMemorablePassword() {
+        function generatePassword() {
             if (words.length === 0 || symbols.length === 0) {
                 document.getElementById("password").innerText = "Loading words... Try again.";
                 return;
             }
             const word1 = words[Math.floor(Math.random() * words.length)];
             const word2 = words[Math.floor(Math.random() * words.length)];
-            const word3 = words[Math.floor(Math.random() * words.length)];
             const number = Math.floor(Math.random() * 100);
+            const symbol = getRandomSymbol();
             
-            const separator1 = getRandomSymbol();
-            const separator2 = getRandomSymbol();
-            const separator3 = getRandomSymbol();
-            
-            document.getElementById("password").innerText = word1 + separator1 + word2 + separator2 + word3 + separator3 + number;
+            document.getElementById("password").innerText = word1 + symbol + word2 + number;
         }
 
         loadWordsAndSymbols();
