@@ -120,20 +120,13 @@
 
     <section id="password-generator">
         <div class="container">
-            <img src="mascot.png" alt="Mascot" class="mascot">
-            <h2>Here's a fun password for you!</h2>
+            <h2>Generate Passwords</h2>
+            <input type="text" id="username" placeholder="Enter your username">
+            <input type="email" id="email" placeholder="Enter your email">
             <div class="speech-bubble" id="password">Click the button to generate!</div>
             <br>
-            <button class="btn" onclick="generatePassword()">Generate Password</button>
-        </div>
-    </section>
-    
-    <section id="password-generator">
-        <div class="container">
-            <h2>Here's a fun password for you!</h2>
-            <div class="speech-bubble" id="password">Click the button to generate!</div>
-            <br>
-            <button class="btn" onclick="generatePassword()">Generate Password</button>
+            <button class="btn" onclick="generatePasswords()">Generate Passwords</button>
+            <div class="speech-bubble" id="output"></div>
         </div>
     </section>
 
@@ -156,7 +149,7 @@
             return symbols.length > 0 ? symbols[Math.floor(Math.random() * symbols.length)] : '!';
         }
         
-        function generatePassword() {
+        function generatePasswords() {
             if (words.length === 0 || symbols.length === 0) {
                 document.getElementById("password").innerText = "Loading words... Try again.";
                 return;
@@ -165,12 +158,17 @@
             const word2 = words[Math.floor(Math.random() * words.length)];
             const word3 = words[Math.floor(Math.random() * words.length)];
             const number = Math.floor(Math.random() * 100);
-            const separator1 = getRandomSymbol();
-            const separator2 = getRandomSymbol();
-            const separator3 = getRandomSymbol();
+            const symbol1 = getRandomSymbol();
+            const symbol2 = getRandomSymbol();
             
-            document.getElementById("password").innerText = word1 + separator1 + word2 + separator2 + word3 + separator3 + number;
-    
+            const emailPassword = `${word1}${symbol1}${word2}${symbol2}${word3}${number}`;
+            const pcPassword = `${word1}${symbol1}${word2}${number}`;
+            
+            const username = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+            
+            const outputText = `Username: ${username}\nEmail: ${email}\nWebsite: https://www.microsoft365.com/\nEmail Password: ${emailPassword}\nPC Password: ${pcPassword}`;
+            document.getElementById("output").innerText = outputText;
         }
 
         loadWordsAndSymbols();
