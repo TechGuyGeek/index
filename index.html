@@ -152,35 +152,53 @@
     </section>
 
     <script>
-        async function fetchRandomWord() {
-            try {
-                const response = await fetch("https://random-word-api.herokuapp.com/word");
-                const data = await response.json();
-                return data[0];
-            } catch (error) {
-                console.error("Error fetching word:", error);
-                return "default";
-            }
-        }
+       const wordsList = ["apple", "banana", "cherry", "grape", "mango", "strawberry", "blueberry", "orange", "peach", "pineapple"];
 
-        async function generatePasswords() {
-            const word1 = await fetchRandomWord();
-            const word2 = await fetchRandomWord();
-            const word3 = await fetchRandomWord();
-            const number = Math.floor(Math.random() * 100);
-            const symbols = "!@#$%^&*";
-            const symbol1 = symbols[Math.floor(Math.random() * symbols.length)];
-            const symbol2 = symbols[Math.floor(Math.random() * symbols.length)];
-            
-            const emailPassword = `${word1}${symbol1}${word2}${symbol2}${word3}${number}`;
-            const pcPassword = `${word1}${symbol1}${word2}${number}`;
-            
-            const username = document.getElementById("username").value;
-            const email = document.getElementById("email").value;
-            
-            const outputText = `<b>Username:</b> ${username}<br><b>Email:</b> ${email}<br><b>Website:</b> https://www.microsoft365.com/<br><b>Email Password:</b> <span style='white-space: nowrap;'>${emailPassword}</span><br><b>PC Password:</b> ${pcPassword}`;
-            document.getElementById("output").innerHTML = outputText;
+async function fetchRandomWord() {
+    const apis = [
+        "https://random-word-api.herokuapp.com/word",
+        "https://api.datamuse.com/words?ml=random&max=10"
+    ];
+
+    for (let api of apis) {
+        try {
+            const response = await fetch(api);
+            const data = await response.json();
+
+            // Handle different API response formats
+            if (api.includes("random-word-api")) {
+                return data[0]; // Expects ["word"]
+            } else if (api.includes("datamuse")) {
+                return data.length > 0 ? data[Math.floor(Math.random() * data.length)].word : null;
+            }
+        } catch (error) {
+            console.error(`Error fetching word from ${api}:`, error);
         }
+    }
+
+    // If all API requests fail, return a fallback word from the local list
+    console.warn("All word APIs failed, using local fallback.");
+    return wordsList[Math.floor(Math.random() * wordsList.length)];
+}
+
+async function generatePasswords() {
+    const word1 = await fetchRandomWord();
+    const word2 = await fetchRandomWord();
+    const word3 = await fetchRandomWord();
+    const number = Math.floor(Math.random() * 100);
+    const symbols = "!@#$%^&*";
+    const symbol1 = symbols[Math.floor(Math.random() * symbols.length)];
+    const symbol2 = symbols[Math.floor(Math.random() * symbols.length)];
+    
+    const emailPassword = `${word1}${symbol1}${word2}${symbol2}${word3}${number}`;
+    const pcPassword = `${word1}${symbol1}${word2}${number}`;
+    
+    const username = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
+    
+    const outputText = `<b>Username:</b> ${username}<br><b>Email:</b> ${email}<br><b>Website:</b> https://www.microsoft365.com/<br><b>Email Password:</b> <span style='white-space: nowrap;'>${emailPassword}</span><br><b>PC Password:</b> ${pcPassword}`;
+    document.getElementById("output").innerHTML = outputText;
+}
     </script>
 
 
