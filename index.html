@@ -51,6 +51,7 @@
         padding: 20px;
         border-radius: 15px;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        text-align: left;
     }
     .speech-bubble {
         position: relative;
@@ -58,9 +59,11 @@
         padding: 15px;
         border-radius: 10px;
         display: inline-block;
-        font-size: 20px;
+        font-size: 18px;
         font-weight: bold;
         color: #333;
+        margin-top: 10px;
+        width: 90%;
     }
     .speech-bubble:after {
         content: '';
@@ -73,18 +76,27 @@
         transform: translateX(-50%);
     }
     .btn {
-        margin-top: 20px;
+        margin-top: 15px;
         background: #ff9800;
         color: white;
         border: none;
-        padding: 10px 20px;
+        padding: 12px 20px;
         font-size: 18px;
         border-radius: 5px;
         cursor: pointer;
         transition: 0.3s;
+        display: block;
+        width: 100%;
     }
     .btn:hover {
         background: #e68900;
+    }
+    input {
+        width: 90%;
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
     }
 </style>
 </head>
@@ -106,19 +118,13 @@
     <section id="password-generator">
         <div class="container">
             <h2>Generate Passwords</h2>
-            <br>
             <input type="text" id="username" placeholder="Enter your username">
-             <br>
             <input type="email" id="email" placeholder="Enter your email">
-             <br>
-            <div class="speech-bubble" id="password">Click the button to generate!</div>
-            <br>
             <button class="btn" onclick="generatePasswords()">Generate Passwords</button>
-             <br>
             <div class="speech-bubble" id="output"></div>
-             <br>
         </div>
     </section>
+
 
     <script>
         let words = [];
