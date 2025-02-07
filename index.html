@@ -316,6 +316,15 @@
                 alert("Please enter your postcode.");
             }
         }
+
+         function copyToClipboard() {
+            const outputText = document.getElementById("output").innerText;
+            navigator.clipboard.writeText(outputText).then(() => {
+                alert("Copied to clipboard!");
+            }).catch(err => {
+                console.error("Error copying text: ", err);
+            });
+        }
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANMv8rs1hkhoUeibf9Zis-AmZMsLxU6yc&callback=initMap"></script>
 </body>
