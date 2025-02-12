@@ -204,7 +204,7 @@
 
    async function generatePasswords() {
     const word1 = await fetchRandomWord();
-    const word2 = await fetchRandomWord();
+    let word2 = await fetchRandomWord();
     const word3 = await fetchRandomWord();
     const number = Math.floor(Math.random() * 100);
     const symbols = "!@#$%^&*";
