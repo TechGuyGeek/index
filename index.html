@@ -162,91 +162,101 @@
     </div>
 </div>
 
-<style>
-    /* Styles scoped only for password generator */
-    #password-generator {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        text-align: center;
-        padding: 20px;
-    }
-
-    .password-container {
-        background: white;
-        color: #333;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        max-width: 400px;
-        text-align: center;
-    }
-
-    .password-container input {
-        width: 100%;
-        padding: 10px;
-        margin: 5px 0;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-    }
-
-    .pg-generate-btn, .pg-copy-btn {
-        width: 100%;
-        padding: 10px;
-        margin-top: 10px;
-        border: none;
-        border-radius: 8px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: 0.3s;
-    }
-
-    .pg-generate-btn {
-        background: #f39c12;
-        color: white;
-    }
-
-    .pg-generate-btn:hover {
-        background: #e67e22;
-    }
-
-    .pg-copy-btn {
-        background: #27ae60;
-        color: white;
-    }
-
-    .pg-copy-btn:hover {
-        background: #2ecc71;
-    }
-
-    .pg-output {
-        background: #ecf0f1;
-        padding: 10px;
-        border-radius: 8px;
-        margin-top: 15px;
-        text-align: left;
-        font-family: monospace;
-        white-space: pre-wrap;
-    }
-</style>
+  <section id="password-generator">
+    <div class="container">
+        <h2>Generate Passwords</h2>
+        <input type="text" id="username" placeholder="Enter your username">
+        <input type="email" id="email" placeholder="Enter your email">
+        <div class="speech-bubble" id="password">Click the button to generate!</div>
+        <button class="btn" onclick="generatePasswords()">Generate Passwords</button>
+        <div class="output-wrapper">
+            <div class="output-container" id="output"></div>
+            <button class="btn" onclick="copyAndEncrypt()">Copy & Encrypt</button>
+        </div>
+    </div>
+</section>
 
 <script>
-    function generatePasswords() {
-        const name = document.getElementById('pg-name').value;
-        const email = document.getElementById('pg-email').value;
-        const password = Math.random().toString(36).slice(-12) + '@!1';
-        const pcPassword = 'compass' + Math.floor(Math.random() * 100);
-        document.getElementById('pg-output').innerText = 
-            `NAME: ${name}\nEMAIL: ${email}\nEMAIL PASSWORD: ${password}\nPC PASSWORD: ${pcPassword}`;
-    }
-
-    function copyToClipboard() {
-        const text = document.getElementById('pg-output').innerText;
-        navigator.clipboard.writeText(text).then(() => {
-            alert("Copied to clipboard!");
+async function fetchWithTimeout(url, timeout = 5000) {
+    return new Promise((resolve, reject) => {
+        const timer = setTimeout(() => reject(new Error("Request timed out")), timeout);
+        fetch(url).then(response => {
+            clearTimeout(timer);
+            resolve(response);
+        }).catch(err => {
+            clearTimeout(timer);
+            reject(err);
         });
+    });
+}
+
+async function fetchRandomWord() {
+    const fallbackWords = ["apple", "banana", "cherry", "grape", "mango", "orange", "peach", "pineapple"];
+
+    try {
+        // Attempt API request with a 5-second timeout
+        const response = await fetchWithTimeout("http://www.dinopass.com/password/strong", 5000);
+        const data = await response.json();
+        return data[0]; // Return API word if successful
+    } catch (error) {
+        console.warn("API request failed or timed out, trying local file...");
+
+        try {
+            // Load words from local words_symbols.json
+            const response = await fetch("words_symbols.json");
+            const data = await response.json();
+            return data.words[Math.floor(Math.random() * data.words.length)];
+        } catch (fileError) {
+            console.error("Failed to load local words file. Using hardcoded fallback.");
+            return fallbackWords[Math.floor(Math.random() * fallbackWords.length)];
+        }
     }
+}
+
+async function generatePasswords() {
+    const word1 = await fetchRandomWord();
+    let word2 = await fetchRandomWord();
+    const word3 = await fetchRandomWord();
+    const number = Math.floor(Math.random() * 100);
+    const symbols = "!@#$%^&*";
+    const symbol1 = symbols[Math.floor(Math.random() * symbols.length)];
+    const symbol2 = symbols[Math.floor(Math.random() * symbols.length)];
+
+    // Capitalize the first letter of word2
+    word2 = word2.charAt(0).toUpperCase() + word2.slice(1);
+
+    // Construct the original password
+    let emailPassword = `${word1}${symbol1}${word2}${symbol2}${word3}${number}`;
+
+    // Replace 'a' and 'o' with '@' in the email password
+    emailPassword = emailPassword.replace(/a/g, '@').replace(/o/g, '@');
+
+    // PC password remains unchanged
+    const pcPassword = `${word1}${word2}${number}`;
+
+    const username = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
+
+    const encryptionLink = "https://password.link/en";
+    const outputText = `
+        <b>NAME: </b> ${username}<br>
+        <b>EMAIL: </b> ${email}<br>
+        <b>EMAIL PORTAL: </b> <a href="https://www.microsoft365.com/" target="_blank">https://www.microsoft365.com/</a><br>
+        <b>EMAIL PASSWORD: </b> <span style='white-space: nowrap;'>${emailPassword}</span><br>
+        <b>PC PASSWORD: </b> ${pcPassword}<br><br>
+    `;
+
+    document.getElementById("output").innerHTML = outputText;
+}
+
+function copyAndEncrypt() {
+    const text = document.getElementById("output").innerText;
+
+    navigator.clipboard.writeText(text).then(() => {
+        alert("Copied to clipboard! Redirecting to encrypt page...");
+        window.open("https://password.link/en", "_blank"); // Open encryption page in a new tab
+    }).catch(err => console.error("Error copying text: ", err));
+}
 </script>
 
 
