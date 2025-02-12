@@ -210,6 +210,9 @@
     const symbols = "!@#$%^&*";
     const symbol1 = symbols[Math.floor(Math.random() * symbols.length)];
     const symbol2 = symbols[Math.floor(Math.random() * symbols.length)];
+
+        // Capitalize the first letter of word2
+        word2 = word2.charAt(0).toUpperCase() + word2.slice(1);
     
     // Construct the original password
     let emailPassword = `${word1}${symbol1}${word2}${symbol2}${word3}${number}`;
