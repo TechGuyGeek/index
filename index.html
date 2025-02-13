@@ -273,7 +273,7 @@ function copyAndEncrypt() {
 
 
 <!DOCTYPE html>
-<html lang="en">\ portion,
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -316,7 +316,7 @@ function copyAndEncrypt() {
             }
         }
 
-        .services-content {
+        .services-content, .contact-content {
             position: relative;
             z-index: 1;
             color: white;
@@ -328,6 +328,37 @@ function copyAndEncrypt() {
             margin: auto;
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
             line-height: 1.6;
+        }
+
+        #ads {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        .ad-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .ad-box {
+            background: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            max-width: 300px;
+        }
+        
+        #contact {
+            position: relative;
+            overflow: hidden;
+            background: url('/mnt/data/image.png'); /* Animated circuit background */
+            background-size: cover;
+            padding: 50px 0;
         }
     </style>
 </head>
@@ -356,6 +387,31 @@ function copyAndEncrypt() {
         </div>
     </section>
     
+    <section id="contact">
+        <div class="contact-content">
+            <h1>Contact Us</h1>
+            <p>Get in touch for more details.</p>
+            <p>Call us: <a href="tel:+447525830620">07525830620</a></p>
+            <p>Email: <a href="mailto:support@techguygeek.com">support@techguygeek.com</a></p>
+            <p>WhatsApp: <a href="https://wa.me/447525830620" target="_blank">Message us on WhatsApp</a></p>
+            <p>Find me: Elbourn House, Cale Street, Chelsea, SW33SD</p>
+            <p>Enter your postcode for directions:</p>
+            <form id="directionsForm">
+                <input type="text" id="postcode" name="postcode" placeholder="Enter your postcode">
+                <button type="button" onclick="getDirections()">Get Directions</button>
+            </form>
+        </div>
+    </section>
+    
+    <section id="ads">
+        <h2>Sponsored Ads</h2>
+        <div class="ad-container">
+            <div class="ad-box">Ad Placeholder 1</div>
+            <div class="ad-box">Ad Placeholder 2</div>
+            <div class="ad-box">Ad Placeholder 3</div>
+        </div>
+    </section>
+    
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const container = document.querySelector(".circuit-container");
@@ -367,55 +423,6 @@ function copyAndEncrypt() {
                 container.appendChild(line);
             }
         });
-    </script>
-</body>
-</html>
-
-    
-
-
-    <section id="contact">
-        <h1>Contact Us</h1>
-        <br>
-        <p>Get in touch for more details.</p>
-        <br>
-        <p>Call us: <a href="tel:+447525830620">07525830620</a></p>
-        <br>
-        <p>Email: <a href="mailto:support@techguygeek.com">support@techguygeek.com</a></p>
-        <br>
-        <p>WhatsApp: <a href="https://wa.me/447525830620" target="_blank">Message us on WhatsApp</a></p>
-        <br>
-        <p>Find me: Elbourn house Cale street Chelsea SW33SD</p>
-        <br>
-        <div id="map" class="map-container"></div>
-        <p>Enter your postcode for directions:</p>
-        <form id="directionsForm">
-            <input type="text" id="postcode" name="postcode" placeholder="Enter your postcode">
-            <button type="button" onclick="getDirections()">Get Directions</button>
-        </form>
-    </section>
-
-    <section id="ads">
-        <h2>Sponsored Ads</h2>
-        <div class="ad-container">
-            <div class="ad-box">Ad Placeholder 1</div>
-            <div class="ad-box">Ad Placeholder 2</div>
-            <div class="ad-box">Ad Placeholder 3</div>
-        </div>
-    </section>
-
-    <script>
-        function initMap() {
-            const location = { lat: 51.490763, lng: -0.168110 };
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 15,
-                center: location,
-            });
-            const marker = new google.maps.Marker({
-                position: location,
-                map: map,
-            });
-        }
 
         function getDirections() {
             const postcode = document.getElementById('postcode').value;
@@ -426,16 +433,6 @@ function copyAndEncrypt() {
                 alert("Please enter your postcode.");
             }
         }
-
-         function copyToClipboard() {
-            const outputText = document.getElementById("output").innerText;
-            navigator.clipboard.writeText(outputText).then(() => {
-                alert("Copied to clipboard!");
-            }).catch(err => {
-                console.error("Error copying text: ", err);
-            });
-        }
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANMv8rs1hkhoUeibf9Zis-AmZMsLxU6yc&callback=initMap"></script>
 </body>
 </html>
