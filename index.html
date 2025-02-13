@@ -270,37 +270,81 @@ function copyAndEncrypt() {
     }).catch(err => console.error("Error copying text: ", err));
 }
 </script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Circuit Board Background</title>
+    <style>
+        #services {
+            position: relative;
+            overflow: hidden;
+            background: #1a1f2b;
+            padding: 50px 0;
+        }
+        
+        .circuit-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.techguygeek.com/static_background.jpg'); /* Use a static image fallback */
+            background-size: cover;
+            z-index: 0;
+        }
 
+        .glow-lines {
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(transparent, cyan, transparent);
+            animation: moveLines 5s linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes moveLines {
+            from {
+                transform: translateY(0%);
+            }
+            to {
+                transform: translateY(100%);
+            }
+        }
+
+        .services-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
     <section id="services">
-        <div class="background-collage">
-            <div class="services-content">
-                <h1>Services</h1>
-                <br>
-                <p>Here's what we can do for you.</p>
-                <br>
-                <p>TechGuyGeek staff have been providing on-site or remote Tech support for companies and the public since 1997. 
-                <br>We are dedicated to assisting you with any tech-related issues you may encounter. Our support extends to various platforms, 
-                <br>including Windows, Apple, and Linux computers, as well as Android and Apple mobile phones.</p>
-                <br>
-                <p>Whether you need assistance setting up a single device or managing hundreds, we are here to help. 
-                <br>We offer personalized support, tailored to suit the needs of your company or home life. 
-                <br>Our expertise includes hands-on assistance or utilizing a Mobile Device Management system, 
-                <br>providing you with the level of control that best fits your requirements.</p>
-                <br>
-                <p>If you want to create your own company or you want us to manage your current systems, 
-                <br>then send us an email so we can discuss domain, email exchange, cloud management systems, 
-                <br>build a website, or website hosting and setup or manage, to get you up and running.</p>
-                <br>
-                <p>In addition to device support, TechGuyGeek can manage and maintain your network to ensure it runs smoothly.
-                <br> If you encounter any issues, please feel free to email us, and we will work with you to resolve them promptly.</p>
-                <br>     
-                <p>We are committed to offering comprehensive explanations to ensure you and your staff can effectively utilize your devices. 
-                <br>
-                <br>TechGuyGeek staff can repair any damage to any device or at least offer some helpful advice on what to do next.</p>
-                <p>Whatever your digital needs may be, don't hesitate to reach out and ask. We're here to help! 😊</p>
-            </div>        
+        <div class="circuit-container"></div>
+        <div class="services-content">
+            <h1>Services</h1>
+            <p>Here's what we can do for you.</p>
         </div>
     </section>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const container = document.querySelector(".circuit-container");
+            for (let i = 0; i < 50; i++) {
+                let line = document.createElement("div");
+                line.classList.add("glow-lines");
+                line.style.left = `${Math.random() * 100}vw`;
+                line.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                container.appendChild(line);
+            }
+        });
+    </script>
+</body>
+</html>
 
     <section id="contact">
         <h1>Contact Us</h1>
