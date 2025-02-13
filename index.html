@@ -270,6 +270,8 @@ function copyAndEncrypt() {
     }).catch(err => console.error("Error copying text: ", err));
 }
 </script>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -290,10 +292,10 @@ function copyAndEncrypt() {
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('/mnt/data/image.png'); /* Using uploaded image */
+            background: url('/mnt/data/image.png'); /* Using correct uploaded image */
             background-size: cover;
             z-index: 0;
-            opacity: 0.3; /* Make the circuit background more subtle */
+            opacity: 0.5; /* Adjusted for better visibility */
         }
 
         .glow-lines {
@@ -320,10 +322,11 @@ function copyAndEncrypt() {
             color: white;
             text-align: center;
             padding: 50px;
-            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background to enhance readability */
+            background: rgba(0, 0, 0, 0.7); /* Stronger contrast for readability */
             border-radius: 10px;
             max-width: 80%;
             margin: auto;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
@@ -333,9 +336,12 @@ function copyAndEncrypt() {
         <div class="services-content">
             <h1>Services</h1>
             <p>Here's what we can do for you.</p>
-            <p>TechGuyGeek staff have been providing on-site or remote tech support since 1997.</p>
-            <p>We support Windows, Apple, and Linux computers, as well as mobile devices.</p>
-            <p>Whether you need single device assistance or enterprise-level support, we're here to help.</p>
+            <p>TechGuyGeek staff have been providing on-site or remote Tech support for companies and the public since 1997.</p>
+            <p>We are dedicated to assisting you with any tech-related issues you may encounter, covering Windows, Apple, and Linux computers, as well as Android and Apple mobile phones.</p>
+            <p>Whether you need assistance setting up a single device or managing hundreds, we are here to help with personalized solutions tailored to your needs.</p>
+            <p>We provide support for domains, email exchange, cloud management systems, website hosting, and network maintenance.</p>
+            <p>TechGuyGeek also manages and maintains networks, ensuring smooth operations, and offers device repairs and helpful advice for troubleshooting.</p>
+            <p>Whatever your digital needs, feel free to reach out. We're here to help! 😊</p>
         </div>
     </section>
     
@@ -353,6 +359,8 @@ function copyAndEncrypt() {
     </script>
 </body>
 </html>
+    
+
 
     <section id="contact">
         <h1>Contact Us</h1>
