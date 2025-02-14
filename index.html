@@ -157,6 +157,14 @@
     flex-direction: column;
     align-items: center;
 }
+
+    .title {
+    color: white;
+    text-shadow: 2px 2px 4px black; /* Adds a shadow for contrast */
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
 </style>
     
 </head>
@@ -176,7 +184,7 @@
 
   <section id="password-generator">
     <div class="container">
-        <h2>Generate Passwords</h2>
+        <h2class="title">Generate Passwords</h2>
         <input type="text" id="username" placeholder="Enter your username">
         <input type="email" id="email" placeholder="Enter your email">
         <input type="text" id="emailPortal" placeholder="EMAIL PORTAL: https://www.microsoft365.com/" value="https://www.microsoft365.com/">
